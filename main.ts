@@ -4,7 +4,7 @@ var ctx: CanvasRenderingContext2D;
 
 var p = 0.2;
 var n = 6;
-var friction = 0.9;
+var friction = 0.5;
 
 var nodearr: GraphNode[] = [];
 var edgearr: GraphEdge[] = [];
@@ -93,7 +93,7 @@ class GraphNode {
 }
 
 for (let i = 0; i <= n; i++) {
-    nodearr.push(new GraphNode(200 + Math.random()*100, 100+Math.random()*100));
+    nodearr.push(new GraphNode(300 + Math.random()*100, 200+Math.random()*100));
 }
 
 for (let i = 0; i <= n; i++) {
@@ -126,8 +126,8 @@ function redraw() {
         for (let j = 0; j <= n; j++) {
             if (i != j) {
                 let node2 = nodearr[j];
-                let scaling = (1 / Math.pow(dist(node, node2), 2)) * 80;
-                if ( scaling < 0.01) scaling = 0;
+                let scaling = (1 / Math.pow(dist(node, node2), 2)) * 200;
+                if ( scaling < 0.009) scaling = 0;
                 node2.velocity = node2.velocity.add(direction(node, node2).times(scaling)); 
             }
         }
