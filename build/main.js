@@ -4,7 +4,7 @@ var MAX_EDGEID = 0;
 var ctx;
 var p = 0.2;
 var n = 6;
-var friction = 0.9;
+var friction = 0.5;
 var nodearr = [];
 var edgearr = [];
 var Vector2D = /** @class */ (function () {
@@ -72,7 +72,7 @@ var GraphNode = /** @class */ (function () {
     return GraphNode;
 }());
 for (var i = 0; i <= n; i++) {
-    nodearr.push(new GraphNode(200 + Math.random() * 100, 100 + Math.random() * 100));
+    nodearr.push(new GraphNode(300 + Math.random() * 100, 200 + Math.random() * 100));
 }
 for (var i = 0; i <= n; i++) {
     for (var j = 0; j <= n; j++) {
@@ -98,8 +98,8 @@ function redraw() {
         for (var j = 0; j <= n; j++) {
             if (i != j) {
                 var node2 = nodearr[j];
-                var scaling = (1 / Math.pow(dist(node, node2), 2)) * 80;
-                if (scaling < 0.01)
+                var scaling = (1 / Math.pow(dist(node, node2), 2)) * 200;
+                if (scaling < 0.009)
                     scaling = 0;
                 node2.velocity = node2.velocity.add(direction(node, node2).times(scaling));
             }
